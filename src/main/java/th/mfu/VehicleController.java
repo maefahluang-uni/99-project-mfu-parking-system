@@ -41,7 +41,6 @@ public class VehicleController{
 
     @PostMapping("/vehicles")
     public String saveVehicle(@ModelAttribute vehicle newemployee) {
-        // In a real application, you would save the employee to a database or other storage
         repository.save(newvehicle);
         return "redirect:/vehicles";
     }
