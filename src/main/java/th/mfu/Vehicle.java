@@ -12,32 +12,22 @@ public class Vehicle {
     private int id;
     
     private String Cartype;
-    
-    // Constructors, getters, and setters
 
-    public Vehicle() {
-        // Default constructor
-    }
-
-    public Vehicle(String Cartype) {
-        this.Cartype = Cartype;
-    }
-
-    // Getters and setters
-
-    public int getId() {
+    public int getId(){
         return id;
     }
-
-    public void setId(int id) {
+    public void setId(int id){
         this.id = id;
     }
 
-    public String getCartype() {
+
+    public String getCartype(){
         return Cartype;
     }
-
-    public void setCartype(String Cartype) {
-        this.Cartype = Cartype;
+    public void setCartype(String cartype){
+        this.Cartype = cartype;
     }
+
+
+    
 }
