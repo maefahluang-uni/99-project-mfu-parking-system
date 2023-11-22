@@ -11,23 +11,19 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
-    private String make;
-    private String model;
-    private String slot;
-
+    private String Cartype;
+    
     // Constructors, getters, and setters
 
     public Vehicle() {
         // Default constructor
     }
 
-    public Vehicle(String make, String model, String slot) {
-        this.make = make;
-        this.model = model;
-        this.slot = slot;
+    public Vehicle(String Cartype) {
+        this.Cartype = Cartype;
     }
 
-    // Getters and setters for id, make, model, and slot
+    // Getters and setters
 
     public int getId() {
         return id;
@@ -37,27 +33,11 @@ public class Vehicle {
         this.id = id;
     }
 
-    public String getMake() {
-        return make;
+    public String getCartype() {
+        return Cartype;
     }
 
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getSlot() {
-        return slot;
-    }
-
-    public void setSlot(String slot) {
-        this.slot = slot;
+    public void setCartype(String Cartype) {
+        this.Cartype = Cartype;
     }
 }
