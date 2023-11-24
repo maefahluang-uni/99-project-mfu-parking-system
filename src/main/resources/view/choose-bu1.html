@@ -127,3 +127,29 @@
                 <%= Name %>
             </center>
         </h1>
+        <form action="/ch-bu1" method="post">
+            <input type="text" id="fk_name" name="fk_name" value="<%= Name %>" style="display: none;">
+            <div class="from-data">
+                <select class="form-select" aria-label="Default select example" id="bk_car" name="bk_car"
+                    style="width: 30%;">
+                    <option selected>เลือกยานพาหนะ</option>
+                    <option value="รถยนต์">รถยนต์</option>
+                    <option value="รถจักรยานยนต์">รถจักรยานยนต์</option>
+                </select>
+                <div style="padding-right: 5%;"></div>
+
+                <input class="form-control" type="date" id="bk_date" name="bk_date" style="width: 30%;">
+                <div style="padding-right: 5%;"></div>
+
+                <select class="form-select" aria-label="Default select example" id="bk_time" name="bk_time"
+                    style="width: 30%;">
+                    <option selected>เลือกเวลา</option>
+                    <option value="09.00 - 10.00 AM">09.00 - 10.00 AM</option>
+                    <option value="10.00 - 11.00 AM">10.00 - 11.00 AM</option>
+                    <option value="12.00 - 13.00 AM">12.00 - 13.00 AM</option>
+                    <option value="13.00 - 14.00 AM">13.00 - 14.00 AM</option>
+                    <option value="14.00 - 15.00 AM">14.00 - 15.00 AM</option>
+                </select>
+            </div>
+            <button class="btn-search">ค้นหา</button>
+        </form>
