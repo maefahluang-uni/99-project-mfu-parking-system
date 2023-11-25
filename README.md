@@ -1,4 +1,4 @@
-Project
+MFU PARKING SYSTEM
 =============
 Please use this template for your project.
 
