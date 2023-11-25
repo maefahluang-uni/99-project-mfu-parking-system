@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import th.mfu.Domain.Reservation;
-import th.mfu.services.ReservationService;
+import th.mfu.Domain.Reservationmanage;
 
 @RestController
 @RequestMapping("reservation")
 public class ReservationController {
 
-    private ReservationService reservationService;
+    private Reservationmanage reservationService;
 
-    private ReservationController(ReservationService reservationService){
+    private ReservationController(Reservationmanage reservationService){
         this.reservationService = reservationService;
     }
 

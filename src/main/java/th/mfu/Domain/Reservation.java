@@ -14,6 +14,7 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int reserid;
+    private int id;
     private Date date;
     private Time starttime;
     private Time endtime;
@@ -24,8 +25,14 @@ public class Reservation {
 
     }
 
-  
+    public int getId(){
+        return id;
+    }
+    public void setId(int id){
+        this.id = id;
+    }
 
+  
     public int getReserId() {
         return reserid;
     }

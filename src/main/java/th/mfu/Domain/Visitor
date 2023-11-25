@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 @Entity
 public class Visitor {
  
-    private int id;
+    private int visitorid;
     private String phonenumb;
 
 
@@ -25,11 +25,11 @@ public class Visitor {
     }
 
     public int getId() {
-        return id;
+        return visitorid;
     }
 
-    public void setId(int id){
-        this.id = id;
+    public void setId(int visitorid){
+        this.visitorid = id;
     }
 
 }
