@@ -1,4 +1,4 @@
-package th.mfu;
+package th.mfu.Domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

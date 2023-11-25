@@ -1,4 +1,4 @@
-package th.mfu;
+package th.mfu.Domain;
 
 import java.util.Date;
 
