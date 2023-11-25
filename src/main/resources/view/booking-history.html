@@ -87,11 +87,11 @@
         </div>
     </header>
     <div class="card-navber">
-        <a href="/map" style="color: #7D2923; text-decoration: none;">
+        <a href="/map/<%= role %>" style="color: #7D2923; text-decoration: none;">
             <h3>แผนที่</h3>
         </a>
 
-        <a href="/choose-a-building" style="color: #7D2923; text-decoration: none;">
+        <a href="/choose-a-building-page/<%= role %>" style="color: #7D2923; text-decoration: none;">
             <h3>เลือกอาคาร</h3>
         </a>
 
@@ -114,48 +114,52 @@
                     d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1" />
             </svg>
         </h4>
-        <% for (let i=0; i < bookings.length; i++) { %>
-            <div>
-                <table class="booking-his">
-                    <tr>
-                        <th style="width: 350px;">
-                            <h3>อาคาร : <%= bookings[i].bk_idname %>
-                            </h3>
-                        </th>
-                        <th style="width: 500px;">
-                            <h3>ประเภทพาหนะ : <%= bookings[i].bk_car %>
-                            </h3>
-                        </th>
-                        <th style="width: 300px;">
-                            <h3>วัน/เวลา : <%= bookings[i].bk_date %>
-                            </h3>
-                        </th>
-                        <th style="width: 580px;">
-                            <h3>
-                                <%= bookings[i].bk_time %> PM
-                            </h3>
-                        </th>
-                        <th>
-                            <form action="/delete-booking" method="post">
-                                <input type="text" id="bk_idname" name="bk_idname" value="<%= bookings[i].bk_idname %>" style="display: none;">
-                                <input type="text" id="bk_time" name="bk_time" value="<%= bookings[i].bk_time %>" style="display: none;">
+        <!-- <h2><%= fk_id %></h2> -->
 
-                                <button type="submit" style="border: 0px; background-color: rgb(204, 204, 204);">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-trash" viewBox="0 0 16 16"
-                                    style="width: 35px; height: 35px; fill: black;">
-                                    <path
-                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
-                                    <path
-                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
-                                </svg>
-                                </button>
-                            </form>
-                        </th>
-                    </tr>
-                </table>
-            </div>
+        <% for (let i=0; i < bookings.length; i++) { 
+            if(bookings[i].fk_id == fk_id)  { %>
+                <div>
+                    <table class="booking-his">
+                        <tr>
+                            <th style="width: 350px;">
+                                <h3>อาคาร : <%= bookings[i].bk_idname %>
+                                </h3>
+                            </th>
+                            <th style="width: 500px;">
+                                <h3>ประเภทพาหนะ : <%= bookings[i].bk_car %>
+                                </h3>
+                            </th>
+                            <th style="width: 300px;">
+                                <h3>วัน/เวลา : <%= bookings[i].bk_date %>
+                                </h3>
+                            </th>
+                            <th style="width: 580px;">
+                                <h3>
+                                    <%= bookings[i].bk_time %> PM
+                                </h3>
+                            </th>
+                            <th>
+                                <form action="/delete-booking" method="post">
+                                    <input type="text" id="bk_idname" name="bk_idname" value="<%= bookings[i].bk_idname %>" style="display: none;">
+                                    <input type="text" id="bk_time" name="bk_time" value="<%= bookings[i].bk_time %>" style="display: none;">
+    
+                                    <button type="submit" style="border: 0px; background-color: rgb(204, 204, 204);">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-trash" viewBox="0 0 16 16"
+                                        style="width: 35px; height: 35px; fill: black;">
+                                        <path
+                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                        <path
+                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                    </svg>
+                                    </button>
+                                </form>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
             <% } %>
+        <% } %>
     </div>
 
     <footer style="display: flex; background-color: #7D2923; color: white; padding: 20px; height: 120px;">
