@@ -1,0 +1,35 @@
+package th.mfu;
+
+
+import javax.persistence.Entity;
+
+
+
+@Entity
+public class Visitor {
+ 
+    private int id;
+    private String phonenumb;
+
+
+    public Visitor(String phonenumb) {
+        this.phonenumb = phonenumb;
+    }
+
+    public String getPhonenumb() {
+        return phonenumb;
+    }
+
+    public void setPhonenumb(String phonenumb){
+        this.phonenumb = phonenumb;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+}

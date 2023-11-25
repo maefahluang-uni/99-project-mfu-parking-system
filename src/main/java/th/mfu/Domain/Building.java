@@ -1,29 +1,47 @@
 package th.mfu.Domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
-
-
-@Entity
 public class Building {
+    private int buildid;
+    private String buildname;
+    private Boolean available;
 
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
-    private String namebulid;
+  
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
+    public Building() {
+
     }
 
-    public String getNamebuild(){
-        return namebulid;
+    public Building(int buildid, String buildname, Boolean available) {
+        this.buildid = buildid;
+        this.buildname = buildname;
+        this.available = available;
     }
-    public void setNamebuild(String namebuild){
-        this.namebulid = namebulid;
+
+  
+
+    public int getBuildId() {
+        return buildid;
     }
+
+    public void setBuildId(int buildid) {
+        this.buildid = buildid;
+    }
+
+    public String getBuildName() {
+        return buildname;
+    }
+
+    public void setBuildName(String buildname) {
+        this.buildname = buildname;
+    }
+
+    public Boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
+
+
 }
