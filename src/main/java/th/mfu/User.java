@@ -1,42 +1,38 @@
 package th.mfu;
-import java.util.List;
+
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
-
+@Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private String student;
-    private String Staffvisitor;
+    private int id;
+    private String phonenumb;
+    
 
-    public long getId() {
+    public User(String phonenumb) {
+        this.phonenumb = phonenumb;
+    }
+
+    public String getPhonenumb() {
+        return phonenumb;
+    }
+
+    public void setPhonenumb(String phonenumb){
+        this.phonenumb = phonenumb;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id){
         this.id = id;
     }
     
-    public String getStudent() {
-        return student;
-    }
-
-    public void setStudent(String student) {
-        this.student = student;
-    }
-
-    public String getstaffvisitor() {
-        return Staffvisitor;
-    }
-
-    public void setStaffvisitor(String staffvisitor) {
-        this.Staffvisitor = staffvisitor;
-    }
-
 }
