@@ -21,17 +21,16 @@
             display: flex;
             background-color: #7D2923;
             color: white;
-            padding: 0px 50px;
         }
-
+    
         .head1_1 {
-            width: 10%;
+            width: 40%;
         }
-
+    
         .enth {
-            width: 90%;
+            width: 20%;
             padding-top: 40px;
-            padding-left: 80%;
+            margin-left: 60%;
         }
 
         .card-navber {
@@ -43,7 +42,7 @@
 
         .content {
             width: 80%;
-            height: 755px;
+            height: 450px;
             padding-left: 20%;
         }
 
@@ -73,6 +72,11 @@
             margin-right: 120px;
         }
 
+        .md-madel {
+            color: #7D2923;
+            margin: 20px 0px;
+        }
+
         .vertical-line {
             width: 2px;
             /* ปรับขนาดของเส้นตามต้องการ */
@@ -82,15 +86,27 @@
             /* ปรับสีตามต้องการ */
             margin: 0px 20px;
         }
+
+        .ftext1 {
+            width: 50%;
+            display: flex;
+        }
+        .ftext2 {
+            width: 50%;
+            padding-left:38%;
+            padding-top: 20px;
+        }
     </style>
 </head>
 
 <body>
     <header>
         <div class="head1">
-            <img src="#" alt="">
+            <a href="/logout">
+                <img src="/images/logo-mfu.png" alt="" width="50px" height="70px" style="margin: 20px 20px 0px 20px;">
+            </a>
             <div class="head1_1">
-                <a href="/logout" style="color: white; text-decoration: none;">
+                <a href="/logout" style="color: rgb(255, 255, 255); text-decoration: none;">
                     <h2>MFU</h2>
                 </a>
                 <hr style="color: white;">
@@ -104,11 +120,11 @@
         </div>
     </header>
     <div class="card-navber">
-        <a href="/map" style="color: #7D2923; text-decoration: none;">
+        <a href="/map/<%= role %>" style="color: #7D2923; text-decoration: none;">
             <h3>แผนที่</h3>
         </a>
 
-        <a href="/choose-a-building" style="color: #7D2923; text-decoration: none;">
+        <a href="/choose-a-building-page/<%= role %>" style="color: #7D2923; text-decoration: none;">
             <h3>เลือกอาคาร</h3>
         </a>
 
@@ -124,11 +140,11 @@
     <div class="content">
         <h1 style="color: #7D2923; margin-bottom: 80px;">
             <center>
-                <%= Name %>
+                <%= bk_idname %>
             </center>
         </h1>
         <form action="/ch-bu1" method="post">
-            <input type="text" id="fk_name" name="fk_name" value="<%= Name %>" style="display: none;">
+            <input type="text" id="bk_idname" name="bk_idname" value="<%= bk_idname %>" style="display: none;">
             <div class="from-data">
                 <select class="form-select" aria-label="Default select example" id="bk_car" name="bk_car"
                     style="width: 30%;">
@@ -144,17 +160,38 @@
                 <select class="form-select" aria-label="Default select example" id="bk_time" name="bk_time"
                     style="width: 30%;">
                     <option selected>เลือกเวลา</option>
-                    <option value="09.00 - 10.00 AM">09.00 - 10.00 AM</option>
-                    <option value="10.00 - 11.00 AM">10.00 - 11.00 AM</option>
-                    <option value="12.00 - 13.00 AM">12.00 - 13.00 AM</option>
-                    <option value="13.00 - 14.00 AM">13.00 - 14.00 AM</option>
-                    <option value="14.00 - 15.00 AM">14.00 - 15.00 AM</option>
+                    <option value="09.00-10.00">09.00 - 10.00 AM</option>
+                    <option value="10.00-11.00">10.00 - 11.00 AM</option>
+                    <option value="12.00-13.00">12.00 - 13.00 AM</option>
+                    <option value="13.00-14.00">13.00 - 14.00 AM</option>
+                    <option value="14.00-15.00">14.00 - 15.00 AM</option>
                 </select>
             </div>
             <button class="btn-search">ค้นหา</button>
         </form>
 
-        <% if(bk_car !=0) { %>
+        <% if(bk_status=="1" ) { %>
+            <button class="booking_now" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <h4 class="bookind-child">
+                    <%= bk_car %>
+                </h4>
+                <h4 class="bookind-child">
+                    <%= bk_date %>
+                </h4>
+                <h4 class="bookind-child">
+                    <%= bk_time %>
+                </h4>
+
+                <div style="color: green; display: flex;">
+                    <h3>ว่าง</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-check-lg" viewBox="0 0 16 16" style="fill: green; width: 30px; height: 30px;">
+                        <path
+                            d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022" />
+                    </svg>
+                </div>
+            </button>
+        <% } else if(bk_status=="0" ) { %>
             <div class="booking_now">
                 <h4 class="bookind-child">
                     <%= bk_car %>
@@ -165,21 +202,98 @@
                 <h4 class="bookind-child">
                     <%= bk_time %>
                 </h4>
-                <h4 style="color: green; margin-left: 240px;">
-                    <%= bk_status %>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-check-lg" viewBox="0 0 16 16" style="fill: green; width: 30px; height: 30px;">
-                            <path
-                                d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022" />
-                        </svg>
-                </h4>
+
+                <div style="color: red; display: flex;">
+                    <h3>ไม่ว่าง</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-check-lg" viewBox="0 0 16 16" style="fill: red; width: 30px; height: 30px;">
+                        <path
+                            d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022" />
+                    </svg>
+                </div>
             </div>
-            <% } %>
+        <% } %>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                                </div>
+                                <form action="/access-booking" method="post">
+                                    <div class="modal-body" style="text-align: center;">
+                                        <div class="md-madel">
+                                            <h3>
+                                                <%= bk_idname %>
+                                            </h3>
+                                            <input type="text" id="bk_idname" name="bk_idname" value="<%= bk_idname %>"
+                                                style="display: none;">
+                                        </div>
+                                        <div class="md-madel">
+                                            <h3>
+                                                <%= bk_car %>
+                                            </h3>
+                                            <input type="text" id="bk_car" name="bk_car" value="<%= bk_car %>"
+                                                style="display: none;">
+                                        </div>
+                                        <div class="md-madel" style="display: flex;">
+                                            <h5 style="margin-left: 40px;">วัน/เวลา : </h5>
+                                            <div style="margin-left: 10px;">
+                                                <h5>
+                                                    <%= bk_date %>
+                                                </h5>
+                                                <input type="text" id="bk_date" name="bk_date" value="<%= bk_date %>"
+                                                    style="display: none;">
+                                            </div>
+                                            <div style="margin-left: 40px;">
+                                                <h5>
+                                                    <%= bk_time %>
+                                                </h5>
+                                                <input type="text" id="bk_time" name="bk_time" value="<%= bk_time %>"
+                                                    style="display: none;">
+                                            </div>
+                                        </div>
+
+                                        <input type="text" id="bk_status" name="bk_status" value="0"
+                                            style="display: none;">
+
+                                        <div class="md-madel">
+                                            <h5>คุณแน่ใจไหม?</h5>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger"
+                                            data-bs-dismiss="modal">ไม่</button>
+                                        <button type="submit" class="btn btn-success">ใช่</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
     </div>
 
-    <footer style="display: flex; background-color: #7D2923; color: white; padding: 20px; height: 120px;">
-
+    <footer style="display: flex; background-color: #7D2923; color: white; padding: 20px;">
+        <div class="ftext1">
+            <h4 style="padding-top: 37px;">ติดต่อเรา</h4>
+            <div class="vertical-line"></div>
+            <div class="ftext1_1">
+                <h4>ส่วนทะเบียนและประมวลผล, มหาวิทยาลัยแม่ฟ้าหลวง</h4>
+                <h4>อาคาร AS ห้อง 107-108</h4>
+                <h4>333 หมู่ 1 ต.ท่าสุด อ.เมือง จ.เชียงราย 57100</h4>
+            </div>
+        </div>
+        <div class="ftext2">
+            <h4>reg@mfu.ac.th</h4>
+            <h4>098 - xxx - xxxz</h4>
+        </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
