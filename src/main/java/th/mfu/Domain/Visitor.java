@@ -1,4 +1,4 @@
-package th.mfu;
+package th.mfu.Domain;
 
 
 import javax.persistence.Entity;
@@ -29,7 +29,7 @@ public class Visitor {
     }
 
     public void setId(int visitorid){
-        this.visitorid = id;
+        this.visitorid = visitorid;
     }
 
 }
