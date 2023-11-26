@@ -6,14 +6,14 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import th.mfu.Domain.Visitor;
-import th.mfu.Repositories.VisitorRespository;
+import th.mfu.Repositories.VisitorRepository;
 
 @Service
 public class VisitorService {
 
-    private static VisitorRespository repository;
+    private static VisitorRepository repository;
 
-    private VisitorService(VisitorRespository repository){
+    private VisitorService(VisitorRepository repository){
         VisitorService.repository = repository;
     }
 
@@ -22,15 +22,14 @@ public class VisitorService {
     }
 
     public List<th.mfu.Domain.Visitor> findByUserId(Integer visitorid){
-        return repository.findByvisitorID(visitorid);
+        return repository.findByVisitorID(visitorid);
     }
 
     public void deleteUser(Integer userId){
         repository.deleteById(userId);
     }
 
-    public static boolean isValidUser(String username, String password) {
-        Object phonenumb;
+    public static boolean isValidUser(String phonenumb) {
         Optional<Visitor> userOptional = repository.findByphonenumb( phonenumb);
         return userOptional.isPresent();
     }

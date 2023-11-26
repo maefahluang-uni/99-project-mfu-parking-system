@@ -1,11 +1,14 @@
 package th.mfu.Repositories;
 
-import org.hibernate.mapping.List;
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import th.mfu.Domain.Reservation;
 
-public interface ReservationRepository extends CrudRepository<Reservation, Long> {
-    
-    
+@Repository
+public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
+    List<Reservation> findByUserID(int userID);    
+
 }

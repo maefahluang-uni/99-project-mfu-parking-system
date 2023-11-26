@@ -1,49 +1,47 @@
 package th.mfu.Domain;
-import javax.persistence.Entity;
 
-@Entity
-public class Building {
-    private int buildid;
-    private String buildname;
-    private Boolean available;
+public class Building{
 
-  
+    private int buildingID, visitorID;
+    private String location;
+    private Boolean availability;
 
-    public Building() {
+    public Building(){
 
     }
 
-    public Building(int buildid, String buildname, Boolean available) {
-        this.buildid = buildid;
-        this.buildname = buildname;
-        this.available = available;
+    public int getBuildingID() {
+        return buildingID;
     }
 
-  
-
-    public int getBuildId() {
-        return buildid;
+    public void setBuildingID(int buildingID) {
+        this.buildingID = buildingID;
     }
 
-    public void setBuildId(int buildid) {
-        this.buildid = buildid;
+    public int getVisitorID() {
+        return visitorID;
     }
 
-    public String getBuildName() {
-        return buildname;
+    public void setVisitorID(int visitorID) {
+        this.visitorID = visitorID;
     }
 
-    public void setBuildName(String buildname) {
-        this.buildname = buildname;
+    public String getLocation() {
+        return location;
     }
 
-    public Boolean isAvailable() {
-        return available;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public void setAvailable(Boolean available) {
-        this.available = available;
+    public Boolean getAvailability() {
+        return availability;
     }
 
+    public void setAvailability(Boolean availability) {
+        this.availability = availability;
+    }
+
+    
 
 }

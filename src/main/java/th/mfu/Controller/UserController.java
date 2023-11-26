@@ -3,6 +3,8 @@ package th.mfu.Controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import th.mfu.Domain.Building;
 import th.mfu.Service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import static javax.swing.JOptionPane.showMessageDialog;
 
+import org.springframework.beans.factory.parsing.Location;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,17 +51,17 @@ public class UserController {
         return "map";
     }
 
-    @GetMapping("/m-booking")
-    public String showMBookingPage(){
-        selectedPlace = "M-Square";
+    @GetMapping("/D1-booking")
+    public String showBookingPage(){
+        selectedBuilding = "M-Square";
         return "booking";
     }
 
     @PostMapping("/main")
-    public String processLogin(String username, String password, RedirectAttributes redirectAttributes) {
-        if (UserService.isValidUser(username, password)) {
+    public String processLogin(String phonenumb, RedirectAttributes redirectAttributes) {
+        if (UserService.isValidUser(phonenumb)) {
             // Valid user, redirect to success page
-            currentUser = username;
+            currentUser = phonenumb;
             return "main-page";
         } else {
             // Invalid user, redirect back to login with an error message
@@ -67,15 +70,15 @@ public class UserController {
         }
     }
 
-    @GetMapping("/yesno")
+    @GetMapping("/comfirmm")
     public String showConfirmBookingPage(){
-        return "yesno";
+        return "comfirm";
     }
 
     //if no
     @GetMapping("/not-confirm")
     public String redirectBookingPage(){
-        return "redirect:/m-square";
+        return "redirect:/D1-square";
     }
 
     //if yes

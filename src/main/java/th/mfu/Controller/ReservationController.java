@@ -33,13 +33,13 @@ public class ReservationController {
     //Path variable
     @GetMapping(value = "/findByUserId/{id}",produces = "application/json")
     public List<Reservation> findByUserId(@PathVariable Integer id){
-        return reservationService.findByVisitorId(id);
+        return reservationService.findByUserId(id);
     }
     
     //Query Variable
     @GetMapping(value = "/findByUserId",produces = "application/json")
     public List<Reservation> findByUserIdQuery(@RequestParam Integer id){
-        return reservationService.findByVisitorId(id);
+        return reservationService.findByUserId(id);
     }
 
     @PostMapping(produces = "application/json")
@@ -54,6 +54,6 @@ public class ReservationController {
 
     @DeleteMapping(produces = "application/json")
     public List<Reservation> deleteReservations(@PathVariable Integer id){
-        return reservationService.findByVisitorId(id);
+        return reservationService.findByUserId(id);
     }
 }

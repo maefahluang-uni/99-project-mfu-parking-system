@@ -19,15 +19,24 @@
             background-color: #7D2923;
             color: white;
         }
-    
+
         .head1_1 {
             width: 40%;
         }
-    
+
         .enth {
             width: 20%;
             padding-top: 40px;
             margin-left: 60%;
+        }
+
+        .en,
+        .th {
+            opacity: 1;
+        }
+
+        .en {
+            opacity: 0.3;
         }
 
         .card-navber {
@@ -109,43 +118,50 @@
             z-index: 1;
             bottom: 45px;
         }
-        
+
         .map-pinD1:hover .popup {
             display: block;
         }
+
         .map-pinAV:hover .popup {
             display: block;
         }
+
         .map-pinE1:hover .popup {
             display: block;
         }
+
         .map-pinE2:hover .popup {
             display: block;
         }
+
         .map-pinE4:hover .popup {
             display: block;
         }
+
         .map-pinS1:hover .popup {
             display: block;
         }
+
         .map-pinS2:hover .popup {
             display: block;
         }
+
         .map-pinS3:hover .popup {
             display: block;
         }
 
 
-        .popup > .pop-image {
+        .popup>.pop-image {
             display: flex;
         }
 
-        .pop-image > img {
-            width: 400px; 
+        .pop-image>img {
+            width: 400px;
             height: auto;
             border-radius: 15px;
         }
-        
+
         .vertical-line {
             width: 2px;
             /* ปรับขนาดของเส้นตามต้องการ */
@@ -160,10 +176,21 @@
             width: 50%;
             display: flex;
         }
+
         .ftext2 {
             width: 50%;
-            padding-left:38%;
+            padding-left: 38%;
             padding-top: 20px;
+        }
+
+        .line-lang {
+            width: 2px;
+            /* ปรับขนาดของเส้นตามต้องการ */
+            height: 20px;
+            /* ปรับความสูงตามต้องการ */
+            background-color: rgb(255, 255, 255);
+            /* ปรับสีตามต้องการ */
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -184,7 +211,17 @@
                 </a>
             </div>
             <div class="enth">
-                <h3>EN/TH</h3>
+                <h3 style="display: flex;">
+                    <button onclick="changeLanguage('en', '<%= role %>')" class="en"
+                        style="background-color: #7D2923; border: 0px; color: white;">
+                        EN
+                    </button>
+                    <div class="line-lang"></div>
+                    <button onclick="changeLanguage('th')" class="th"
+                        style="background-color: #7D2923; border: 0px; color: white;">
+                        TH
+                    </button>
+                </h3>
             </div>
         </div>
     </header>
@@ -192,240 +229,192 @@
         <!-- <a href="/map" style="color: #7D2923; text-decoration: none;">
             <h3>แผนที่</h3>
         </a> -->
-        <h3>แผนที่</h3>
+        <h3 id="Map">แผนที่</h3>
 
         <a href="/choose-a-building-page/<%= role %>" style="color: #7D2923; text-decoration: none;">
-            <h3>เลือกอาคาร</h3>
+            <h3 id="Buding">เลือกอาคาร</h3>
         </a>
 
         <a href="/contact_us" style="color: #7D2923; text-decoration: none;">
-            <h3>ติดต่อเรา</h3>
+            <h3 id="Contact">ติดต่อเรา</h3>
         </a>
 
         <!-- <a href="/Booking-history" style="color: #7D2923; text-decoration: none;">
             <h3>ประวัติการจอง</h3>
         </a> -->
-        <h3>ประวัติการจอง</h3>
+        <h3 id="History">ประวัติการจอง</h3>
     </div>
 
     <div class="content">
         <div class="image-map">
             <img src="/images/map.png" alt="map">
 
-            <% if(role == "admin") { %>
-                <div class="map-pinD1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                    </svg>
-                    <div class="popup">
-                        <h1><center style="color: #7D2923;">D1</center></h1>
-                        <div class="pop-image" style="margin-bottom: 40px;">
-                            <img src="/images/D1_1.png" alt="" style="margin-right: 20px;">
-                            <img src="/images/D1_2.png" alt="">
-                        </div>
-                        <h3 style="color: #7D2923;"><strong>ประเภทของอาคาร : กลุ่มอาคารการศึกษา</strong></h3>
-                        <h3 style="color: #7D2923;"><strong>D1 : อาคารโรงอาหาร</strong></h3>
+            <div class="map-pinD1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                </svg>
+                <div class="popup">
+                    <h1>
+                        <center style="color: #7D2923;">D1</center>
+                    </h1>
+                    <div class="pop-image" style="margin-bottom: 40px;">
+                        <img src="/images/D1_1.png" alt="" style="margin-right: 20px;">
+                        <img src="/images/D1_2.png" alt="">
                     </div>
+                    <h3 style="color: #7D2923;"><strong id="D1">ประเภทของอาคาร : กลุ่มอาคารการศึกษา</strong></h3>
+                    <h3 style="color: #7D2923;"><strong id="d1">D1 : อาคารโรงอาหาร</strong></h3>
                 </div>
-    
-                <div class="map-pinAV">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                    </svg>
-                    <div class="popup">
-                        <h1><center style="color: #7D2923;">AV</center></h1>
-                        <div class="pop-image" style="margin-bottom: 40px;">
-                            <img src="/images/AV.png" alt="">
-                        </div>
-                        <h3 style="color: #7D2923;"><strong>ประเภทของอาคาร : กลุ่มอาคารปฎิบัติการ</strong></h3>
-                        <h3 style="color: #7D2923;"><strong>AV : ศูนย์บรรณสารและการศึกษา (ห้องสมุด)</strong></h3>
-                    </div>
-                </div>
-    
-                <div class="map-pinE1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                    </svg>
-                    <div class="popup">
-                        <h1><center style="color: #7D2923;">E1</center></h1>
-                        <div class="pop-image" style="margin-bottom: 40px;">
-                            <img src="/images/E1_1.png" alt="" style="margin-right: 20px;">
-                            <img src="/images/E1_2.png" alt="">
-                        </div>
-                        <h3 style="color: #7D2923;"><strong>ประเภทของอาคาร : กลุ่มอาคารปฎิบัติการ</strong></h3>
-                        <h3 style="color: #7D2923;"><strong>E1 : อาคารสำนักวิชา</strong></h3>
-                    </div>
-                </div>
-    
-                <div class="map-pinE2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                    </svg>
-                    <div class="popup">
-                        <h1><center style="color: #7D2923;">E2</center></h1>
-                        <div class="pop-image" style="margin-bottom: 40px;">
-                            <img src="/images/E2_1.png" alt="" style="margin-right: 20px;">
-                            <img src="/images/E2_2.png" alt="">
-                        </div>
-                        <h3 style="color: #7D2923;"><strong>ประเภทของอาคาร : กลุ่มอาคารการศึกษา</strong></h3>
-                        <h3 style="color: #7D2923;"><strong>E2 : อาคารสำนักวิชา 2</strong></h3>
-                    </div>
-                </div>
-    
-                <div class="map-pinE4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                    </svg>
-                    <div class="popup">
-                        <h1><center style="color: #7D2923;">E4</center></h1>
-                        <div class="pop-image" style="margin-bottom: 40px;">
-                            <img src="/images/E4.png" alt="">
-                        </div>
-                        <h3 style="color: #7D2923;"><strong>ประเภทของอาคาร : กลุ่มอาคารการศึกษา</strong></h3>
-                        <h3 style="color: #7D2923;"><strong>E4 : อาคาร พลเอก สำเภา ชูศรี</strong></h3>
-                    </div>
-                </div>
-            <% } else if(role == "user") { %>
-                <div class="map-pinD1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                    </svg>
-                    <div class="popup">
-                        <h1><center style="color: #7D2923;">D1</center></h1>
-                        <div class="pop-image" style="margin-bottom: 40px;">
-                            <img src="/images/D1_1.png" alt="" style="margin-right: 20px;">
-                            <img src="/images/D1_2.png" alt="">
-                        </div>
-                        <h3 style="color: #7D2923;"><strong>ประเภทของอาคาร : กลุ่มอาคารการศึกษา</strong></h3>
-                        <h3 style="color: #7D2923;"><strong>D1 : อาคารโรงอาหาร</strong></h3>
-                    </div>
-                </div>
-    
-                <div class="map-pinAV">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                    </svg>
-                    <div class="popup">
-                        <h1><center style="color: #7D2923;">AV</center></h1>
-                        <div class="pop-image" style="margin-bottom: 40px;">
-                            <img src="/images/AV.png" alt="">
-                        </div>
-                        <h3 style="color: #7D2923;"><strong>ประเภทของอาคาร : กลุ่มอาคารปฎิบัติการ</strong></h3>
-                        <h3 style="color: #7D2923;"><strong>AV : ศูนย์บรรณสารและการศึกษา (ห้องสมุด)</strong></h3>
-                    </div>
-                </div>
-    
-                <div class="map-pinE1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                    </svg>
-                    <div class="popup">
-                        <h1><center style="color: #7D2923;">E1</center></h1>
-                        <div class="pop-image" style="margin-bottom: 40px;">
-                            <img src="/images/E1_1.png" alt="" style="margin-right: 20px;">
-                            <img src="/images/E1_2.png" alt="">
-                        </div>
-                        <h3 style="color: #7D2923;"><strong>ประเภทของอาคาร : กลุ่มอาคารปฎิบัติการ</strong></h3>
-                        <h3 style="color: #7D2923;"><strong>E1 : อาคารสำนักวิชา</strong></h3>
-                    </div>
-                </div>
-    
-                <div class="map-pinE2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                    </svg>
-                    <div class="popup">
-                        <h1><center style="color: #7D2923;">E2</center></h1>
-                        <div class="pop-image" style="margin-bottom: 40px;">
-                            <img src="/images/E2_1.png" alt="" style="margin-right: 20px;">
-                            <img src="/images/E2_2.png" alt="">
-                        </div>
-                        <h3 style="color: #7D2923;"><strong>ประเภทของอาคาร : กลุ่มอาคารการศึกษา</strong></h3>
-                        <h3 style="color: #7D2923;"><strong>E2 : อาคารสำนักวิชา 2</strong></h3>
-                    </div>
-                </div>
-    
-                <div class="map-pinE4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                    </svg>
-                    <div class="popup">
-                        <h1><center style="color: #7D2923;">E4</center></h1>
-                        <div class="pop-image" style="margin-bottom: 40px;">
-                            <img src="/images/E4.png" alt="">
-                        </div>
-                        <h3 style="color: #7D2923;"><strong>ประเภทของอาคาร : กลุ่มอาคารการศึกษา</strong></h3>
-                        <h3 style="color: #7D2923;"><strong>E4 : อาคาร พลเอก สำเภา ชูศรี</strong></h3>
-                    </div>
-                </div>
+            </div>
 
-                <div class="map-pinS1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                    </svg>
-                    <div class="popup">
-                        <h1><center style="color: #7D2923;">S1</center></h1>
-                        <div class="pop-image" style="margin-bottom: 40px;">
-                            <img src="/images/S1.png" alt="">
-                        </div>
-                        <h3 style="color: #7D2923;"><strong>ประเภทของอาคาร : กลุ่มอาคารปฎิบัติการ</strong></h3>
-                        <h3 style="color: #7D2923;"><strong>S1 : อาคารปฎิบัติการทางวิทยาศาสตร์และเทคโนโลยี</strong></h3>
+            <div class="map-pinAV">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                </svg>
+                <div class="popup">
+                    <h1>
+                        <center style="color: #7D2923;">AV</center>
+                    </h1>
+                    <div class="pop-image" style="margin-bottom: 40px;">
+                        <img src="/images/AV.png" alt="">
                     </div>
+                    <h3 style="color: #7D2923;"><strong id="AV">ประเภทของอาคาร : กลุ่มอาคารปฎิบัติการ</strong></h3>
+                    <h3 style="color: #7D2923;"><strong id="av">AV : ศูนย์บรรณสารและการศึกษา (ห้องสมุด)</strong></h3>
                 </div>
+            </div>
 
-                <div class="map-pinS2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                    </svg>
-                    <div class="popup">
-                        <h1><center style="color: #7D2923;">S2</center></h1>
-                        <div class="pop-image" style="margin-bottom: 40px;">
-                            <img src="/images/S2.png" alt="">
-                        </div>
-                        <h3 style="color: #7D2923;"><strong>ประเภทของอาคาร : กลุ่มอาคารปฎิบัติการ</strong></h3>
-                        <h3 style="color: #7D2923;"><strong>S2 : อาคารปฎิบัติการทางวิทยาศาสตร์และเทคโนโลยี 2</strong></h3>
+            <div class="map-pinE1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                </svg>
+                <div class="popup">
+                    <h1>
+                        <center style="color: #7D2923;">E1</center>
+                    </h1>
+                    <div class="pop-image" style="margin-bottom: 40px;">
+                        <img src="/images/E1_1.png" alt="" style="margin-right: 20px;">
+                        <img src="/images/E1_2.png" alt="">
                     </div>
+                    <h3 style="color: #7D2923;"><strong id="E1">ประเภทของอาคาร : กลุ่มอาคารปฎิบัติการ</strong></h3>
+                    <h3 style="color: #7D2923;"><strong id="e1">E1 : อาคารสำนักวิชา</strong></h3>
                 </div>
+            </div>
 
-                <div class="map-pinS3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                    </svg>
-                    <div class="popup">
-                        <h1><center style="color: #7D2923;">S3</center></h1>
-                        <div class="pop-image" style="margin-bottom: 40px;">
-                            <img src="/images/S2.png" alt="">
-                        </div>
-                        <h3 style="color: #7D2923;"><strong>ประเภทของอาคาร : กลุ่มอาคารปฎิบัติการ</strong></h3>
-                        <h3 style="color: #7D2923;"><strong>S3 : อาคารปฎิบัติการทางวิทยาศาสตร์และเทคโนโลยี 3</strong></h3>
+            <div class="map-pinE2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                </svg>
+                <div class="popup">
+                    <h1>
+                        <center style="color: #7D2923;">E2</center>
+                    </h1>
+                    <div class="pop-image" style="margin-bottom: 40px;">
+                        <img src="/images/E2_1.png" alt="" style="margin-right: 20px;">
+                        <img src="/images/E2_2.png" alt="">
                     </div>
+                    <h3 style="color: #7D2923;"><strong id="E2">ประเภทของอาคาร : กลุ่มอาคารการศึกษา</strong></h3>
+                    <h3 style="color: #7D2923;"><strong id="e2">E2 : อาคารสำนักวิชา 2</strong></h3>
                 </div>
-            <% } %>
+            </div>
+
+            <div class="map-pinE4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="fill: red; width: 40px; height: 40px;">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                </svg>
+                <div class="popup">
+                    <h1>
+                        <center style="color: #7D2923;">E4</center>
+                    </h1>
+                    <div class="pop-image" style="margin-bottom: 40px;">
+                        <img src="/images/E4.png" alt="">
+                    </div>
+                    <h3 style="color: #7D2923;"><strong id="E4">ประเภทของอาคาร : กลุ่มอาคารการศึกษา</strong></h3>
+                    <h3 style="color: #7D2923;"><strong id="e4">E4 : อาคาร พลเอก สำเภา ชูศรี</strong></h3>
+                </div>
+            </div>
+            <% if(role=="admin" ) { %>
+
+                <% } else if(role=="user" ) { %>
+                    <div class="map-pinS1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-geo-alt-fill" viewBox="0 0 16 16"
+                            style="fill: red; width: 40px; height: 40px;">
+                            <path
+                                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                        </svg>
+                        <div class="popup">
+                            <h1>
+                                <center style="color: #7D2923;">S1</center>
+                            </h1>
+                            <div class="pop-image" style="margin-bottom: 40px;">
+                                <img src="/images/S1.png" alt="">
+                            </div>
+                            <h3 style="color: #7D2923;"><strong id="S1">ประเภทของอาคาร : กลุ่มอาคารปฎิบัติการ</strong>
+                            </h3>
+                            <h3 style="color: #7D2923;"><strong id="s1">S1 :
+                                    อาคารปฎิบัติการทางวิทยาศาสตร์และเทคโนโลยี</strong>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="map-pinS2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-geo-alt-fill" viewBox="0 0 16 16"
+                            style="fill: red; width: 40px; height: 40px;">
+                            <path
+                                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                        </svg>
+                        <div class="popup">
+                            <h1>
+                                <center style="color: #7D2923;">S2</center>
+                            </h1>
+                            <div class="pop-image" style="margin-bottom: 40px;">
+                                <img src="/images/S2.png" alt="">
+                            </div>
+                            <h3 style="color: #7D2923;"><strong id="S2">ประเภทของอาคาร : กลุ่มอาคารปฎิบัติการ</strong>
+                            </h3>
+                            <h3 style="color: #7D2923;"><strong id="s2">S2 : อาคารปฎิบัติการทางวิทยาศาสตร์และเทคโนโลยี
+                                    2</strong></h3>
+                        </div>
+                    </div>
+
+                    <div class="map-pinS3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-geo-alt-fill" viewBox="0 0 16 16"
+                            style="fill: red; width: 40px; height: 40px;">
+                            <path
+                                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                        </svg>
+                        <div class="popup">
+                            <h1>
+                                <center style="color: #7D2923;">S3</center>
+                            </h1>
+                            <div class="pop-image" style="margin-bottom: 40px;">
+                                <img src="/images/S2.png" alt="">
+                            </div>
+                            <h3 style="color: #7D2923;"><strong id="S3">ประเภทของอาคาร : กลุ่มอาคารปฎิบัติการ</strong>
+                            </h3>
+                            <h3 style="color: #7D2923;"><strong id="s3">S3 : อาคารปฎิบัติการทางวิทยาศาสตร์และเทคโนโลยี
+                                    3</strong></h3>
+                        </div>
+                    </div>
+                    <% } %>
 
         </div>
     </div>
 
     <footer style="display: flex; background-color: #7D2923; color: white; padding: 20px;">
         <div class="ftext1">
-            <h4 style="padding-top: 37px;">ติดต่อเรา</h4>
+            <h4 style="padding-top: 37px;" id="foot1">ติดต่อเรา</h4>
             <div class="vertical-line"></div>
             <div class="ftext1_1">
-                <h4>ส่วนทะเบียนและประมวลผล, มหาวิทยาลัยแม่ฟ้าหลวง</h4>
-                <h4>อาคาร AS ห้อง 107-108</h4>
-                <h4>333 หมู่ 1 ต.ท่าสุด อ.เมือง จ.เชียงราย 57100</h4>
+                <h4 id="foot2">ส่วนทะเบียนและประมวลผล, มหาวิทยาลัยแม่ฟ้าหลวง</h4>
+                <h4 id="foot3">อาคาร AS ห้อง 107-108</h4>
+                <h4 id="foot4">333 หมู่ 1 ต.ท่าสุด อ.เมือง จ.เชียงราย 57100</h4>
             </div>
         </div>
         <div class="ftext2">
@@ -433,17 +422,196 @@
             <h4>098 - xxx - xxxz</h4>
         </div>
     </footer>
+
     <script>
         function showPopup() {
             var popup = document.querySelector('.map-pinE4 .popup');
             popup.style.display = 'block';
         }
-        
+
         function hidePopup() {
             var popup = document.querySelector('.map-pinE4 .popup');
             popup.style.display = 'none';
         }
-        
+
+        function changeLanguage(language, role) {
+            var Map = document.getElementById('Map');
+            var Buding = document.getElementById('Buding');
+            var Contact = document.getElementById('Contact');
+            var History = document.getElementById('History');
+
+            var D1 = document.getElementById('D1');
+            var d1 = document.getElementById('d1');
+
+            var AV = document.getElementById('AV');
+            var av = document.getElementById('av');
+
+            var E1 = document.getElementById('E1');
+            var e1 = document.getElementById('e1');
+
+            var E2 = document.getElementById('E2');
+            var e2 = document.getElementById('e2');
+
+            var E4 = document.getElementById('E4');
+            var e4 = document.getElementById('e4');
+
+            var foot1 = document.getElementById('foot1');
+            var foot2 = document.getElementById('foot2');
+            var foot3 = document.getElementById('foot3');
+            var foot4 = document.getElementById('foot4');
+
+            var enButton = document.querySelector('.en');
+            var thButton = document.querySelector('.th');
+
+            if (role == "user") {
+                var S1 = document.getElementById('S1');
+                var s1 = document.getElementById('s1');
+
+                var S2 = document.getElementById('S2');
+                var s2 = document.getElementById('s2');
+
+                var S3 = document.getElementById('S3');
+                var s3 = document.getElementById('s3');
+                if (language === 'en') {
+                    Map.innerText = 'MAP';
+                    Buding.innerText = 'SELECT BUDING';
+                    Contact.innerText = 'CONTACT US';
+                    History.innerText = 'BOOKING HISTORY';
+    
+                    D1.innerText = 'Type of building : Operational building group';
+                    d1.innerText = 'D1 : Students’ Activity and Canteen';
+    
+                    AV.innerText = 'Type of building : Operational building group';
+                    av.innerText = 'AV : Learning Resources and Educational Media Center : Library';
+    
+                    E1.innerText = 'Type of building : Operational building group';
+                    e1.innerText = 'E1 : Faculty office Building 1';
+    
+                    E2.innerText = 'Type of building : Operational building group';
+                    e2.innerText = 'E2 : Faculty office Building 2';
+    
+                    E4.innerText = 'Type of building : Operational building group';
+                    e4.innerText = 'E4 : General Sampao Choosri Building';
+    
+                    S1.innerText = 'Type of building : Operational building group';
+                    s1.innerText = 'S1 : Scientific & Technological Laboratory Buildings 1';
+    
+                    S2.innerText = 'Type of building : Operational building group';
+                    s2.innerText = 'S2 : Scientific & Technological Laboratory Buildings 2 ';
+    
+                    S3.innerText = 'Type of building : Operational building group';
+                    s3.innerText = 'S3 : Scientific & Technological Laboratory Buildings 3';
+    
+                    foot1.innerText = 'Contact Us';
+                    foot2.innerText = 'Registrar Division, Mae Fah Luang University';
+                    foot3.innerText = 'AS Building, 1st floor, Room 107 and 108';
+                    foot4.innerText = '333 Moo 1, Thasud, Muang, Chiang Rai 57100';
+    
+                    enButton.style.opacity = '1';
+                    thButton.style.opacity = '0.3';
+                } else if (language === 'th') {
+                    Map.innerText = 'แผนที่';
+                    Buding.innerText = 'เลือกอาคาร';
+                    Contact.innerText = 'ติดต่อเรา';
+                    History.innerText = 'ประวัติการจอง';
+    
+                    D1.innerText = 'ประเภทของอาคาร : กลุ่มอาคารการศึกษา';
+                    d1.innerText = 'D1 : อาคารโรงอาหาร';
+    
+                    AV.innerText = 'ประเภทของอาคาร : กลุ่มอาคารปฏิบัติการ';
+                    av.innerText = 'AV : ศูนย์บรรณสารและสื่อการศึกษา (ห้องสมุด)';
+    
+                    E1.innerText = 'ประเภทของอาคาร : กลุ่มอาคารปฏิบัติการ';
+                    e1.innerText = 'E1 : อาคารสำนักวิชา';
+    
+                    E2.innerText = 'ประเภทของอาคาร : กลุ่มอาคารการศึกษา';
+                    e2.innerText = 'E2 : อาคารสำนักวิชา 2';
+    
+                    E4.innerText = 'ประเภทของอาคาร : กลุ่มอาคารการศึกษา';
+                    e4.innerText = 'E4 : อาคาร พลเอก สำเภา ชูครี';
+    
+                    S1.innerText = 'ประเภทของอาคาร : กลุ่มอาคารปฏิบัติการ';
+                    s1.innerText = 'S1 : อาคารปฏิบัติการทางวิทยาศาสตร์และเทคโนโลยี 1';
+    
+                    S2.innerText = 'ประเภทของอาคาร : กลุ่มอาคารปฏิบัติการ';
+                    s2.innerText = 'S2 : อาคารปฏิบัติการทางวิทยาศาสตร์และเทคโนโลยี 2';
+    
+                    S3.innerText = 'ประเภทของอาคาร : กลุ่มอาคารปฏิบัติการ';
+                    s3.innerText = 'S3 : อาคารปฏิบัติการทางวิทยาศาสตร์และเทคโนโลยี 3';
+    
+                    foot1.innerText = 'ติดต่อเรา';
+                    foot2.innerText = 'ส่วนทะเบียนและประมวลผล, มหาวิทยาลัยแม่ฟ้าหลวง';
+                    foot3.innerText = 'อาคาร AS ห้อง 107-108';
+                    foot4.innerText = '333 หมู่ 1 ต.ท่าสุด อ.เมือง จ.เชียงราย 57100';
+    
+                    enButton.style.opacity = '0.3';
+                    thButton.style.opacity = '1';
+                }
+            } else {
+                if (language === 'en') {
+                    Map.innerText = 'MAP';
+                    Buding.innerText = 'SELECT BUDING';
+                    Contact.innerText = 'CONTACT US';
+                    History.innerText = 'BOOKING HISTORY';
+    
+                    D1.innerText = 'Type of building : Operational building group';
+                    d1.innerText = 'D1 : Students’ Activity and Canteen';
+    
+                    AV.innerText = 'Type of building : Operational building group';
+                    av.innerText = 'AV : Learning Resources and Educational Media Center : Library';
+    
+                    E1.innerText = 'Type of building : Operational building group';
+                    e1.innerText = 'E1 : Faculty office Building 1';
+    
+                    E2.innerText = 'Type of building : Operational building group';
+                    e2.innerText = 'E2 : Faculty office Building 2';
+    
+                    E4.innerText = 'Type of building : Operational building group';
+                    e4.innerText = 'E4 : General Sampao Choosri Building';
+    
+                    foot1.innerText = 'Contact Us';
+                    foot2.innerText = 'Registrar Division, Mae Fah Luang University';
+                    foot3.innerText = 'AS Building, 1st floor, Room 107 and 108';
+                    foot4.innerText = '333 Moo 1, Thasud, Muang, Chiang Rai 57100';
+    
+                    enButton.style.opacity = '1';
+                    thButton.style.opacity = '0.3';
+                } else if (language === 'th') {
+                    Map.innerText = 'แผนที่';
+                    Buding.innerText = 'เลือกอาคาร';
+                    Contact.innerText = 'ติดต่อเรา';
+                    History.innerText = 'ประวัติการจอง';
+    
+                    D1.innerText = 'ประเภทของอาคาร : กลุ่มอาคารการศึกษา';
+                    d1.innerText = 'D1 : อาคารโรงอาหาร';
+    
+                    AV.innerText = 'ประเภทของอาคาร : กลุ่มอาคารปฏิบัติการ';
+                    av.innerText = 'AV : ศูนย์บรรณสารและสื่อการศึกษา (ห้องสมุด)';
+    
+                    E1.innerText = 'ประเภทของอาคาร : กลุ่มอาคารปฏิบัติการ';
+                    e1.innerText = 'E1 : อาคารสำนักวิชา';
+    
+                    E2.innerText = 'ประเภทของอาคาร : กลุ่มอาคารการศึกษา';
+                    e2.innerText = 'E2 : อาคารสำนักวิชา 2';
+    
+                    E4.innerText = 'ประเภทของอาคาร : กลุ่มอาคารการศึกษา';
+                    e4.innerText = 'E4 : อาคาร พลเอก สำเภา ชูครี';
+    
+                    foot1.innerText = 'ติดต่อเรา';
+                    foot2.innerText = 'ส่วนทะเบียนและประมวลผล, มหาวิทยาลัยแม่ฟ้าหลวง';
+                    foot3.innerText = 'อาคาร AS ห้อง 107-108';
+                    foot4.innerText = '333 หมู่ 1 ต.ท่าสุด อ.เมือง จ.เชียงราย 57100';
+    
+                    enButton.style.opacity = '0.3';
+                    thButton.style.opacity = '1';
+                }
+            }
+
+            
+
+            // ตัวอย่างเพิ่มเติม: สามารถเพิ่มรายละเอียดเพิ่มเติมเช่นการส่ง request ไปยัง server เพื่อดึงข้อมูลภาษาอื่น ๆ
+            // หรือการเก็บข้อมูลภาษาทั้งหมดในไฟล์ JSON และใช้ JavaScript เพื่อดึงข้อมูลตามภาษาที่เลือก
+        }
     </script>
 </body>
 
