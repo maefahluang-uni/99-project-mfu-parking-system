@@ -31,7 +31,7 @@ public class VisitorService {
 
     public static boolean isValidUser(String username, String password) {
         Object phonenumb;
-        Optional<Visitor> userOptional = repository.findByphonenumb(phonenumb);
+        Optional<Visitor> userOptional = repository.findByphonenumb( phonenumb);
         return userOptional.isPresent();
     }
 }
