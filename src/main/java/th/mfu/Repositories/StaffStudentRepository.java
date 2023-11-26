@@ -8,5 +8,5 @@ import th.mfu.Domain.StaffStudent;
 
 public interface StaffStudentRepository extends CrudRepository<StaffStudent, Integer> {
     
-    
+    StaffStudent findbyStaffId(String phonenumb);
 }

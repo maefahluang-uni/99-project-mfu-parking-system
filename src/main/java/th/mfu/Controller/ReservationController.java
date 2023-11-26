@@ -12,48 +12,48 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import th.mfu.Domain.Reservation;
-import th.mfu.Domain.Reservationmanage;
+import th.mfu.Service.ReservationService;
 
 @RestController
 @RequestMapping("reservation")
 public class ReservationController {
 
-    private Reservationmanage ReservationService;
+    private ReservationService reservationService;
 
-    private ReservationController(Reservationmanage reservationService){
-        this.ReservationService = reservationService;
+    private ReservationController(ReservationService reservationService){
+        this.reservationService = reservationService;
     }
 
 
     @GetMapping(produces = "application/json")
     public List<Reservation> findAll(){
-        return ReservationService.findAll();
+        return reservationService.findAll();
     }
 
     //Path variable
     @GetMapping(value = "/findByUserId/{id}",produces = "application/json")
     public List<Reservation> findByUserId(@PathVariable Integer id){
-        return ReservationService.findByUserId(id);
+        return reservationService.findByVisitorId(id);
     }
     
     //Query Variable
     @GetMapping(value = "/findByUserId",produces = "application/json")
     public List<Reservation> findByUserIdQuery(@RequestParam Integer id){
-        return ReservationService.findByUserId(id);
+        return reservationService.findByVisitorId(id);
     }
 
     @PostMapping(produces = "application/json")
     public Reservation createReservation(Reservation reservation){
-        return ReservationService.createReservation(reservation);
+        return reservationService.createReservation(reservation);
     }
 
     @PutMapping(produces = "application/json")
     public Reservation updateReservations(Reservation reservation){
-        return ReservationService.updateReservation(reservation);
+        return reservationService.createReservation(reservation);
     }
 
     @DeleteMapping(produces = "application/json")
     public List<Reservation> deleteReservations(@PathVariable Integer id){
-        return ReservationService.findByUserId(id);
+        return reservationService.findByVisitorId(id);
     }
 }
