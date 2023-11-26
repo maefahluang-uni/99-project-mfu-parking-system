@@ -1,5 +1,7 @@
 package th.mfu.Domain;
+import javax.persistence.Entity;
 
+@Entity
 public class Building {
     private int buildid;
     private String buildname;

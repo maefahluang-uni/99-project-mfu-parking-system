@@ -18,42 +18,42 @@ import th.mfu.Domain.Reservationmanage;
 @RequestMapping("reservation")
 public class ReservationController {
 
-    private Reservationmanage reservationService;
+    private Reservationmanage ReservationService;
 
     private ReservationController(Reservationmanage reservationService){
-        this.reservationService = reservationService;
+        this.ReservationService = reservationService;
     }
 
 
     @GetMapping(produces = "application/json")
     public List<Reservation> findAll(){
-        return reservationService.findAll();
+        return ReservationService.findAll();
     }
 
     //Path variable
     @GetMapping(value = "/findByUserId/{id}",produces = "application/json")
     public List<Reservation> findByUserId(@PathVariable Integer id){
-        return reservationService.findByUserId(id);
+        return ReservationService.findByUserId(id);
     }
     
     //Query Variable
     @GetMapping(value = "/findByUserId",produces = "application/json")
     public List<Reservation> findByUserIdQuery(@RequestParam Integer id){
-        return reservationService.findByUserId(id);
+        return ReservationService.findByUserId(id);
     }
 
     @PostMapping(produces = "application/json")
     public Reservation createReservation(Reservation reservation){
-        return reservationService.createReservation(reservation);
+        return ReservationService.createReservation(reservation);
     }
 
     @PutMapping(produces = "application/json")
     public Reservation updateReservations(Reservation reservation){
-        return reservationService.updateReservation(reservation);
+        return ReservationService.updateReservation(reservation);
     }
 
     @DeleteMapping(produces = "application/json")
     public List<Reservation> deleteReservations(@PathVariable Integer id){
-        return reservationService.findByUserId(id);
+        return ReservationService.findByUserId(id);
     }
 }
