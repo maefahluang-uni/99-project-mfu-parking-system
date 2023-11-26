@@ -19,7 +19,7 @@ import th.mfu.Service.ReservationService;
 @RequestMapping("reservation")
 public class ReservationController {
 
-    
+    @Autowired
     private ReservationService reservationService;
 
     private ReservationController(ReservationService reservationService){
