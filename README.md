@@ -2,7 +2,7 @@ Project name : MFU Parking system
 =======
 MFU PARKING SYSTEM
 
-=============
+============
 Project description : This website made for staffs, students and visitors who want to reserve parking lot.
 
 List your group's member's below with ID and name.
