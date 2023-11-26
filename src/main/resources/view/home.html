@@ -12,19 +12,21 @@
             margin: 0;
             padding: 0;
         }
+        
         .head1 {
             display: flex;
             background-color: #7D2923;
             color: white;
-            padding: 0px 50px;
         }
+    
         .head1_1 {
-            width: 10%;
+            width: 40%;
         }
+    
         .enth {
-            width: 90%;
+            width: 20%;
             padding-top: 40px;
-            padding-left: 80%;
+            margin-left: 60%;
         }
 
         .card-navber {
@@ -50,12 +52,13 @@
         }
 
         .ftext1 {
-            width: 35%;
+            width: 50%;
             display: flex;
         }
         .ftext2 {
-            width: 65%;
-            padding-left: 55%;
+            width: 50%;
+            padding-left:38%;
+            padding-top: 20px;
         }
 
         .vertical-line{
@@ -64,13 +67,15 @@
             background-color: rgb(255, 255, 255); /* ปรับสีตามต้องการ */
             margin: 0px 20px;         
         }
-        
+
     </style>
 </head>
 <body>
     <header>
         <div class="head1">
-            <img src="#" alt="">
+            <a href="/logout">
+                <img src="/images/logo-mfu.png" alt="" width="50px" height="70px" style="margin: 20px 20px 0px 20px;">
+            </a>
             <div class="head1_1">
                 <a href="/logout" style="color: rgb(255, 255, 255); text-decoration: none;">
                     <h2>MFU</h2>
@@ -86,13 +91,15 @@
         </div>
     </header>
     <div class="card-navber">
-        <a href="/map" style="color: #7D2923; text-decoration: none;">
+        <!-- <a href="/map" style="color: #7D2923; text-decoration: none;">
             <h3>แผนที่</h3>
-        </a>
+        </a> -->
+        <h3>แผนที่</h3>
 
-        <a href="/choose-a-building" style="color: #7D2923; text-decoration: none;">
+        <!-- <a href="/choose-a-building" style="color: #7D2923; text-decoration: none;">
             <h3>เลือกอาคาร</h3>
-        </a>
+        </a> -->
+        <h3>เลือกอาคาร</h3>
 
         <a href="/contact_us" style="color: #7D2923; text-decoration: none;">
             <h3>ติดต่อเรา</h3>
@@ -102,15 +109,18 @@
             <h3>ประวัติการจอง</h3>
         </a>
     </div>
-    <div class="container p-5" style="height: 685px;">
-        <div class="card">
+
+    <!-- <h2><%= username %></h2> -->
+
+    <div class="container p-5" style="height: 420px;">
+        <div class="card" style="margin-top: 7%;">
             <div class="card-body">
                     <!-- <h1>Hello, <%= username %></h1> -->
                     <div class="body-btn"> 
-                        <a href="/map" style="color: #7D2923; text-decoration: none;">
+                        <a href="/map/admin" style="color: #7D2923; text-decoration: none;">
                             <button class="btn-box-map"><h3>ผู้มาเยือน</h3></button>
                         </a>
-                        <a href="/map" style="color: #7D2923; text-decoration: none;">
+                        <a href="/map/user" style="color: #7D2923; text-decoration: none;">
                             <button class="btn-box-map"><h3>พนักงาน/นักศึกษา</h3></button>
                         </a>
                     </div>
