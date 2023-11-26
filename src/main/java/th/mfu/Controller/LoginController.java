@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import th.mfu.Service.VisitorService;
+import th.mfu.Service.UserService;
 
 @Controller
 @RequestMapping("/login")
 public class LoginController {
 
-    public LoginController(VisitorService visitorservice) {
+    public LoginController(UserService userService) {
     }
 
     @GetMapping
