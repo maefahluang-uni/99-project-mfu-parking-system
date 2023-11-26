@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,21 +13,30 @@
             margin: 0;
             padding: 0;
         }
-        
+
         .head1 {
             display: flex;
             background-color: #7D2923;
             color: white;
         }
-    
+
         .head1_1 {
             width: 40%;
         }
-    
+
         .enth {
             width: 20%;
             padding-top: 40px;
             margin-left: 60%;
+        }
+
+        .en,
+        .th {
+            opacity: 1;
+        }
+
+        .en {
+            opacity: 0.3;
         }
 
         .card-navber {
@@ -47,14 +57,39 @@
             color: white;
         }
 
-        .vertical-line{
-            width: 2px; /* ปรับขนาดของเส้นตามต้องการ */
-            height: 100px; /* ปรับความสูงตามต้องการ */
-            background-color: rgb(255, 255, 255); /* ปรับสีตามต้องการ */
-            margin: 0px 20px;         
+        .vertical-line {
+            width: 2px;
+            /* ปรับขนาดของเส้นตามต้องการ */
+            height: 100px;
+            /* ปรับความสูงตามต้องการ */
+            background-color: rgb(255, 255, 255);
+            /* ปรับสีตามต้องการ */
+            margin: 0px 20px;
+        }
+
+        .ftext1 {
+            width: 50%;
+            display: flex;
+        }
+    
+        .ftext2 {
+            width: 50%;
+            padding-left: 38%;
+            padding-top: 20px;
+        }
+
+        .line-lang {
+            width: 2px;
+            /* ปรับขนาดของเส้นตามต้องการ */
+            height: 20px;
+            /* ปรับความสูงตามต้องการ */
+            background-color: rgb(255, 255, 255);
+            /* ปรับสีตามต้องการ */
+            margin-top: 10px;
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="head1">
@@ -71,28 +106,37 @@
                 </a>
             </div>
             <div class="enth">
-                <h3>EN/TH</h3>
+                <h3 style="display: flex;">
+                    <button onclick="changeLanguage('en')" class="en"
+                        style="background-color: #7D2923; border: 0px; color: white;">
+                        EN
+                    </button>
+                    <div class="line-lang"></div>
+                    <button onclick="changeLanguage('th')" class="th"
+                        style="background-color: #7D2923; border: 0px; color: white;">
+                        TH
+                    </button>
+                </h3>
             </div>
         </div>
     </header>
     <div class="card-navber">
         <a href="/map" style="color: #7D2923; text-decoration: none;">
-            <h3>แผนที่</h3>
+            <h3 id="Map">แผนที่</h3>
         </a>
 
         <!-- <a href="/choose-a-building" style="color: #7D2923; text-decoration: none;"> 
             <h3>เลือกอาคาร</h3>
         </a> -->
-        <h3>เลือกอาคาร</h3>
+        <h3 id="Buding">เลือกอาคาร</h3>
 
         <a href="/contact_us" style="color: #7D2923; text-decoration: none;">
-            <h3>ติดต่อเรา</h3>
+            <h3 id="Contact">ติดต่อเรา</h3>
         </a>
 
         <a href="/Booking-history" style="color: #7D2923; text-decoration: none;">
-            <h3>ประวัติการจอง</h3>
+            <h3 id="History">ประวัติการจอง</h3>
         </a>
-        <!-- <h3>ประวัติการจอง</h3> -->
     </div>
 
     <div class="content">
@@ -102,9 +146,70 @@
         <h4>reg@mfu.ac.th</h4>
         <h4>098 - xxx - xxxz</h4>
     </div>
-    
-    <footer style="display: flex; background-color: #7D2923; color: white; padding: 20px; height: 120px;">
-        
+
+    <footer style="display: flex; background-color: #7D2923; color: white; padding: 20px;">
+        <div class="ftext1">
+            <h4 style="padding-top: 37px;" id="foot1">ติดต่อเรา</h4>
+            <div class="vertical-line"></div>
+            <div class="ftext1_1">
+                <h4 id="foot2">ส่วนทะเบียนและประมวลผล, มหาวิทยาลัยแม่ฟ้าหลวง</h4>
+                <h4 id="foot3">อาคาร AS ห้อง 107-108</h4>
+                <h4 id="foot4">333 หมู่ 1 ต.ท่าสุด อ.เมือง จ.เชียงราย 57100</h4>
+            </div>
+        </div>
+        <div class="ftext2">
+            <h4>reg@mfu.ac.th</h4>
+            <h4>098 - xxx - xxxz</h4>
+        </div>
     </footer>
+
+    <script>
+        function changeLanguage(language) {
+            var Map = document.getElementById('Map');
+            var Buding = document.getElementById('Buding');
+            var Contact = document.getElementById('Contact');
+            var History = document.getElementById('History');
+
+            var foot1 = document.getElementById('foot1');
+            var foot2 = document.getElementById('foot2');
+            var foot3 = document.getElementById('foot3');
+            var foot4 = document.getElementById('foot4');
+
+            var enButton = document.querySelector('.en');
+            var thButton = document.querySelector('.th');
+
+            if (language === 'en') {
+                Map.innerText = 'MAP';
+                Buding.innerText = 'SELECT BUDING';
+                Contact.innerText = 'CONTACT US';
+                History.innerText = 'BOOKING HISTORY';
+
+                foot1.innerText = 'Contact Us';
+                foot2.innerText = 'Registrar Division, Mae Fah Luang University';
+                foot3.innerText = 'AS Building, 1st floor, Room 107 and 108';
+                foot4.innerText = '333 Moo 1, Thasud, Muang, Chiang Rai 57100';
+                
+                enButton.style.opacity = '1';
+                thButton.style.opacity = '0.3';
+            } else if (language === 'th') {
+                Map.innerText = 'แผนที่';
+                Buding.innerText = 'เลือกอาคาร';
+                Contact.innerText = 'ติดต่อเรา';
+                History.innerText = 'ประวัติการจอง';
+
+                foot1.innerText = 'ติดต่อเรา';
+                foot2.innerText = 'ส่วนทะเบียนและประมวลผล, มหาวิทยาลัยแม่ฟ้าหลวง';
+                foot3.innerText = 'อาคาร AS ห้อง 107-108';
+                foot4.innerText = '333 หมู่ 1 ต.ท่าสุด อ.เมือง จ.เชียงราย 57100';
+
+                enButton.style.opacity = '0.3';
+                thButton.style.opacity = '1';
+            }
+
+            // ตัวอย่างเพิ่มเติม: สามารถเพิ่มรายละเอียดเพิ่มเติมเช่นการส่ง request ไปยัง server เพื่อดึงข้อมูลภาษาอื่น ๆ
+            // หรือการเก็บข้อมูลภาษาทั้งหมดในไฟล์ JSON และใช้ JavaScript เพื่อดึงข้อมูลตามภาษาที่เลือก
+        }
+    </script>
 </body>
+
 </html>
