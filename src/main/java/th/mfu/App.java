@@ -8,10 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages =  "th.mfu.*")
-@EnableAutoConfiguration
-@ComponentScan(basePackages = { "th.mfu.*" })
-@EntityScan("th.mfu.*")
 public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
