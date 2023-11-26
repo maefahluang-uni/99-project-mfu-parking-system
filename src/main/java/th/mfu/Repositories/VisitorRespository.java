@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import th.mfu.Domain.Visitor;
 
-public interface VisitorRespository extends CrudRepository<Visitor, Integer> {
+public interface VisitorRespository extends CrudRepository<Visitor, Long> {
     Visitor findbyIdVisitor(String phonenumb);
 
     Optional<Visitor> findByphonenumb(Object phonenumb);

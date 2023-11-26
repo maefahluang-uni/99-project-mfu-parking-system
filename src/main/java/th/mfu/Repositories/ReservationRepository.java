@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import th.mfu.Domain.Reservation;
 
-public interface ReservationRepository extends CrudRepository<Reservation, Integer> {
+public interface ReservationRepository extends CrudRepository<Reservation, Long> {
     
     
 }
